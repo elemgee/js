@@ -1,17 +1,18 @@
 body { font-family: Arial, Helvetica, sans-serif; }
 
+/*div {border: 1px solid red;}*/
 .jumbotron
 {
 	background-color: #000000;
-	color: #DDDDDD;
 	background: url("/joey/images/menupose.jpg") bottom left no-repeat #000000;
 	background-position: 0px 25px;
 	height: 230px;
+	margin-top: 20px;
 }
 
 
 .headerquote 
-{
+{	color: #eeeeee;
   clear: right;
   margin-top: .7em;
   padding-right: 0px;
@@ -19,7 +20,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
   font-size: smaller;
 }
 
-.headerquote span
+.headerquote div.quote
 {
 	font-style: italic;
 }
@@ -27,12 +28,11 @@ body { font-family: Arial, Helvetica, sans-serif; }
 .navbar
 {
 	/*background-color: #000000;*/
-	background: rgba(0, 0, 0, .8);
+	background: rgba(0, 0, 0, 1);
 	border: 0px;
-	min-height: 20px;
+	min-height: 30px;
 }
-
-.navbar-nav>li>a
+.navbar-default .navbar-nav>li>a
 {
 	padding: 8px 17px;
 	color: #eeeeee;

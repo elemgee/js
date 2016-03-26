@@ -20,7 +20,7 @@
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/joeysellers.css" rel="stylesheet">
+    <link href="css/joeysellers_plx.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -37,14 +37,16 @@
  <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
+
          <div class="navbar-header">
+         
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
+          <div class="pull-left sitename visible-xs"><a href="#/">JoeySellers.com</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -60,36 +62,36 @@
       </div>
     </nav>
 
+<div id="appPage" ng-controller="AppCtrl">
 
 
+  <div id="imageheader" class="jumbotron">
+  	<div class="sitename pull-right visible-sm visible-md visible-lg"><a href="#/">JoeySellers.com</a></div>
+  	<div class="headerquote col-sm-6 visible-sm visible-md visible-lg pull-right ">  
+	        <div class="quote">&quot;{{randomQuote(); rq.q}}&quot;</div>
+	        <div class="attribution">&mdash; {{rq.a}}</div>
+  	</div>
+  </div>
 
-	<div id="appPage" ng-controller="AppCtrl">
-	    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div id="imageheader" class="jumbotron menupose">
-      <div class="container-fluid">
+<!--
+<div class="banner-image content-fill" style="overflow: hidden;">
+            <img data-src="images/JoeySellers_composer.png" data-image="images/JoeySellers_composer.png" data-image-dimensions="1000x400" data-image-focal-point="0.49333333333333335,0.432" alt="tour.jpg" class="" src="images/JoeySellers_composer.png" data-image-resolution="1500w" >
+            <div class="image-overlay-wrapper"></div>
+          </div>
+ <div class="container-fluid header-quote">
         <div class="sitename"><a href="#/">JoeySellers.com</a></div>
         <div class="headerquote col-sm-6 visible-sm visible-md visible-lg   pull-right ">       
-        <div class="quote">&quot;{{randomQuote(); rq.q}}&quot;</div><div class="attribution">&mdash; {{rq.a}}</div>
+        	<div class="quote">&quot;{{randomQuote(); rq.q}}&quot;</div>
+        	<div class="attribution">&mdash; {{rq.a}}</div>
      </div>
-    </div>
-		
-	</div>
-	
-	<div class="container-fluid" ng-view></div>
-
-<div class="container-fluid">
-<footer>
-        <p>&copy; <script> document.write(new Date().getFullYear()) </script>  Joey Sellers.</p>
-      </footer>
 </div>
-        </div>
-      
-    </div> <!-- /container -->
+-->
+<div class="container-fluid main-content" ng-view></div>
+<footer><p>&copy; <script> document.write(new Date().getFullYear()) </script>  Joey Sellers.</p></footer>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>

@@ -1,5 +1,22 @@
 <script>
-$('#imageheader').css('background-image', 'url(images/menupose.jpg)');
+
+var images = [
+'url(images/JoeySellers_bluewhale.png)',
+'url(images/JoeySellers_05.png)',
+'url(images/JoeySellers_clinician.png)',
+'url(images/JoeySellers_composer.png)',
+'url(images/JoeySellers_contact.png)',
+'url(images/JoeySellers_menu.png)',
+  'url(images/JoeySellers_performer_1.png)',
+  'url(images/JoeySellers_performer_2.png)',
+  'url(images/JoeySellers_performer_3.png)'
+];
+
+var size = images.length;
+var rimg = images[Math.floor(size*Math.random())];
+
+$('#imageheader').css('background-image', rimg);
+
 $("li").removeClass('active');
 </script>
 
