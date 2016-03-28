@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="JoeyApp">
+<html lang="en" data-ng-app="AdminApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <meta name="author" content="Larry Mills-Gahl/Webfarm, Inc.">
     <link rel="icon" href="/favicon.ico">
 
-    <title>Joey Sellers</title>
+    <title>Joey Sellers Admin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,12 +34,12 @@
   </head>
 
   <body>
- <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
+
       <div class="container">
 
          <div class="navbar-header">
-         
+         <h4>JoeySellers.com Admin</h4>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -49,32 +49,20 @@
           <div class="pull-left sitename visible-xs"><a href="#/">JoeySellers.com</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
           <ul class="nav navbar-nav">
 
-            <li id="composer"><a href="#/composer">composer</a></li>
-            <li id="performer" ><a href="#/performer">performer</a></li>
-            <li id="educator"><a href="#/educator">educator</a></li>
-            <li id="contact"><a href="#/contact">contact</a></li>
-            <li id="press"><a href="#/press">press info</a></li>
+            <li id="quotes"><a href="#/quotesadmin">quotes</a></li>
+            <li id="catalog" ><a href="#/catalogadmin">music catalog</a></li>
            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-<div id="appPage" ng-controller="AppCtrl">
+<div id="appPage" ng-controller="AdminCtrl">
 
-
-  <div id="imageheader" class="jumbotron">
-  	<div class="sitename pull-right visible-sm visible-md visible-lg"><a href="#/">JoeySellers.com</a></div>
-  	<div class="headerquote col-sm-6 visible-sm visible-md visible-lg pull-right ">  
-	        <div class="quote">&quot;{{randomQuote(); rq.q}}&quot;</div>
-	        <div class="attribution">&mdash; {{rq.a}}</div>
-  	</div>
-  </div>
-
-
-<div class="container-fluid main-content" ng-view></div>
+  <div class="container-fluid admin-content" ng-view></div>
 <footer><p>&copy; <script> document.write(new Date().getFullYear()) </script>  Joey Sellers.</p></footer>
 
 
@@ -90,46 +78,46 @@
 <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
      
      <script type="text/javascript" src="bower_components/AngularJS-Toaster//toaster.js"></script>
-	<script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     
     
     
        <script type="text/javascript">    
-		var myapp = angular.module('JoeyApp', ['ngRoute']);
-			
-		myapp.controller( 'AppCtrl', function($scope, $http) {
-			$http({method: 'GET', url: 'quotes.json'})
-				. success(function(data, status, headers, config) { 
-					$scope.quotes = data.quotes;
-					$scope.randomQuote = function() {
-						$scope.rq =  $scope.quotes[Math.floor(Math.random() * $scope.quotes.length)];
-					}
-			})
-        		.error(function(data, status, headers, config) {  })
-			}
+        var myapp = angular.module('AdminApp', ['ngRoute']);
+            
+        myapp.controller( 'AdminCtrl', function($scope, $http) {
+            $http.get('quotes.json')
+                .then(function(res) {
+                    $scope.quotes = res.data.quotes
+                });
 
-		);
-		
 
-		
-		
-		myapp.config(specifyRoutes);
-		function specifyRoutes ($routeProvider) {
-			$routeProvider
-				.when('/', {templateUrl: 'partials/home_joey.html' })
-				.when('/composer', {templateUrl: 'partials/composer.html' })
-				.when('/performer', {templateUrl: 'partials/performer.html' })
-				.when('/educator', {templateUrl: 'partials/educator.html' })
-				.when('/contact', {templateUrl: 'partials/contact.html' })
-				.when('/press', {templateUrl: 'partials/press.html' })
-				.when('/photos', {templateUrl: 'partials/photos.html' })
-				.when('/music', {templateUrl: 'partials/music_available.html' });
-		}
-		    
-	
-	</script>
+            $http.get('catalog.json')
+                .then(function(res) {
+                    $scope.catalog = res.data.catalog
+                    $scope.categories = _.groupBy($scope.catalog, function(op) {
+                        return op.category;
+                    })
+                });
+
+
+
+        });
+
+        
+        
+        myapp.config(specifyRoutes);
+        function specifyRoutes ($routeProvider) {
+            $routeProvider
+                .when('/', {templateUrl: 'partials/quotesadmin.html' })
+                .when('/quotesadmin', {templateUrl: 'partials/quotesadmin.html' })
+                .when('/catalogadmin', {templateUrl: 'partials/catalogadmin.html' });
+        }
+            
+    
+    </script>
   </body>
 </html>
-

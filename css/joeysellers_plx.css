@@ -32,12 +32,12 @@ transform: translate3d(0px, 6px, 0px);
 
 footer {
 	padding-left: 2em;
-	padding-top: .6em;
-	padding-bottom: .6em;
+	padding-top: .3em;
 	width: 100%;
-	/*position: fixed;
-	bottom: 0px;*/
-	background-color: rgba(240,240,240,.9);
+	position: fixed;
+	bottom: 0px;
+	color: #efefef;
+	background-color: rgba(40,40,40,.7);
 }
 
 .bg {
@@ -94,11 +94,21 @@ footer {
 	font-style: italic;
 }
 
+.admin-content {
+	margin: 0px;
+	margin-top: 5em;
+	padding: 5em;
+
+	background: rgba(255,255,255,1);
+	min-height: 800px;
+}
+
 .main-content {
 	margin: 0px;
 	margin-top: 300px;
 	padding: 5em;
 	background: rgba(255,255,255,1);
+	min-height: 800px;
 }
 
 .ng-scope {
